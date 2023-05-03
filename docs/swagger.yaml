@@ -1,0 +1,38 @@
+basePath: /api/v1
+definitions:
+  model.UserLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+info:
+  contact: {}
+paths:
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Auth Endpoint
+      parameters:
+      - description: user login by email and password
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Authenticate User
+      tags:
+      - auth
+swagger: "2.0"
