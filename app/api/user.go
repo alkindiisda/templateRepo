@@ -76,7 +76,7 @@ func (u *userAPI) Register(c *gin.Context) {
 func (u *userAPI) Delete(c *gin.Context) {
 	userId, exist := c.Get("id")
 
-	if exist != true {
+	if !exist {
 		c.JSON(http.StatusUnauthorized, model.NewErrorResponse("error unauthorized user id"))
 		return
 	}
