@@ -58,7 +58,7 @@ func main() {
 		router = RunServer(db, router)
 
 		fmt.Println("Server is running on port 8080")
-		err = router.Run("0.0.0.0:8080")
+		err = router.Run()
 		if err != nil {
 			panic(err)
 		}
