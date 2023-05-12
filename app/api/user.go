@@ -28,15 +28,15 @@ func NewUserAPI(userService service.UserService) *userAPI {
 }
 
 // Authenticate User godoc
-// @Summary Authenticate User
-// @Schemes https
-// @Description Auth Endpoint
-// @Tags auth
-// @Accept json
-// @Produce json
-// @Success 200 {string} Ok
-// @Param request body model.UserLogin true "user login by email and password"
-// @Router /users/login [post]
+//	@Summary		Authenticate User
+//	@Schemes		https
+//	@Description	Auth Endpoint
+//	@Tags			auth
+//	@Accept			json
+//	@Produce		json
+//	@Success		200		{string}	Ok
+//	@Param			request	body		model.UserLogin	true	"user login by email and password"
+//	@Router			/users/login [post]
 func (u *userAPI) Login(c *gin.Context) {
 	// TODO: answer here
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"sync"
 	"time"
 
@@ -25,7 +26,9 @@ type APIHandler struct {
 }
 
 func main() {
-	//os.Setenv("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/kampusmerdeka")
+	if os.Getenv("DATABASE_URL") == "" {
+		os.Setenv("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/kampusmerdeka")
+	}
 
 	wg := sync.WaitGroup{}
 
@@ -84,6 +87,7 @@ func RunServer(db *gorm.DB, gin *gin.Engine) *gin.Engine {
 
 	gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
+	gin.Use(middleware.CORSMiddleware())
 	users := gin.Group("/api/v1/users")
 	{
 		users.POST("/login", apiHandler.UserAPIHandler.Login)
